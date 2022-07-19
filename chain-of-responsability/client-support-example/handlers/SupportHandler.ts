@@ -1,6 +1,6 @@
 import { Handler } from '../../protocols/handler';
 import { Request } from '../../protocols/request';
-import {Response} from '../protocols/response'
+import { Response } from '../protocols/response'
 
 export class SupportHandler implements Handler<Response> {
     next: Handler<Response> | null = null;
