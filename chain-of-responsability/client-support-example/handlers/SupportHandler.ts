@@ -3,8 +3,8 @@ import { Request } from '../../protocols/request';
 import { Response } from '../protocols/response'
 
 export class SupportHandler implements Handler<Response> {
-    next: Handler<Response> | null = null;
-
+    constructor(private readonly next: Handler<Response>) {}
+    
     async handle(request: Request): Promise<Response> {
         if(!request?.body?.category || !this.next) {
             return {
@@ -13,9 +13,5 @@ export class SupportHandler implements Handler<Response> {
             }
         }
         return this.next.handle(request)
-    }
-
-    setNext(handler: Handler<Response>): void {
-        this.next = handler;
     }
 }

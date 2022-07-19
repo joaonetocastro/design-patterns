@@ -1,11 +1,9 @@
-import { SupportHandler } from '../handlers'
-import { BrokenProductHandler } from '../handlers/BrokenProductHandler';
+import { SupportHandler, BrokenProductHandler, SupportEndHandler } from '../handlers'
 
 export const makeSupportHandler = () => {
-    const supportHandler = new SupportHandler();
-    const brokenProductHandler = new BrokenProductHandler()
-
-    supportHandler.setNext(brokenProductHandler);
+    const supportEndHandler = new SupportEndHandler();
+    const brokenProductHandler = new BrokenProductHandler(supportEndHandler)
+    const supportHandler = new SupportHandler(brokenProductHandler);
     
     return supportHandler;
 }

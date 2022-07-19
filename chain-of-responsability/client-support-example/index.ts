@@ -1,7 +1,7 @@
 import {makeSupportHandler} from './factories/makeSupportHandler'
 
 const body = {
-    category: 'invalidCategory',
+    category: 'brokenProduct',
     productName: 'TV'
 }
 
