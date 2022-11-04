@@ -1,6 +1,7 @@
-import { ExtractDataVisitor, ExtractDataVisitorItem, ExtractDataVisitorResponse } from "../extract-data-visitor";
+import { VisitorItem } from "../../protocols/visitor";
+import { ExtractDataVisitor, ExtractDataVisitorResponse } from "../extract-data-visitor";
 
-export class Circle implements ExtractDataVisitorItem{
+export class Circle implements VisitorItem<ExtractDataVisitorResponse> {
     constructor(readonly radius: number) {}
 
     extractDataForVisitor(visitor: ExtractDataVisitor): ExtractDataVisitorResponse {
