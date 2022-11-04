@@ -1,4 +1,4 @@
-import { Visitor, VisitorItem } from "../protocols/visitor";
+import { Visitor } from "../protocols/visitor";
 import { Circle } from "./protocols/circle";
 import { Dot } from "./protocols/dot";
 import { Square } from "./protocols/square";
@@ -10,8 +10,12 @@ export interface ExtractDataVisitorResponse {
     radius?: number
 }
 
+export interface ExtractDataVisitorItem {
+    extractDataForVisitor(visitor: ExtractDataVisitor): ExtractDataVisitorResponse
+}
+
 export class ExtractDataVisitor implements Visitor<ExtractDataVisitorResponse[]> {
-    visitItems(items: VisitorItem<ExtractDataVisitorResponse>[]) {
+    visitItems(items: ExtractDataVisitorItem[]) {
         return items.map(item => item.extractDataForVisitor(this))
     }
 
